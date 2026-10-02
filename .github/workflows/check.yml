@@ -1,0 +1,13 @@
+name: Shell checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax
+        run: bash -n aula-f75-remap.sh tests/check.sh
+      - name: Mapping behavior
+        run: bash tests/check.sh
